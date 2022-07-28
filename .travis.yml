@@ -1,0 +1,10 @@
+sudo : required
+language: generic 
+services:
+ -docker
+
+before_isntall:
+ -docker build -f Dockerfile.dev  -t shubham/docker-react .
+
+script
+ -docker run -e CI=true shubham/docker-react npm run test
